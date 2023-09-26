@@ -35,6 +35,7 @@ a {
 /* common */
 :root {
   --text-color: #f4f4fd;
+  --hover-link-color: #404bbf;
 }
 
 .container {
@@ -68,7 +69,7 @@ a {
 .header-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 0 40px;
 }
 
 .logo {
@@ -84,15 +85,34 @@ a {
   color: #2e2f42;
 }
 .header-list-link {
+  display: block;
+  position: relative;
   font-weight: 500;
   color: rgba(46, 47, 66, 1);
   padding-top: 24px;
   padding-bottom: 24px;
+  transition: color 0.7s;
+}
+.header-list-link::after {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  content: "";
+  border-radius: 2px;
+  width: 100%;
+  padding: 2px 0;
+  background-color: transparent;
+  transition: background-color 0.7s;
 }
 .header-list-link:active,
 .header-list-link:hover,
 .header-list-link:focus {
-  color: #404bbf;
+  color: var(--hover-link-color);
+}
+.header-list-link:active::after,
+.header-list-link:hover::after,
+.header-list-link:focus::after {
+  background-color: var(--hover-link-color);
 }
 .header-address {
   font-style: normal;
@@ -100,23 +120,19 @@ a {
 .address-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 0 40px;
 }
 .address-list-link {
+  display: block;
   padding-top: 24px;
   padding-bottom: 24px;
+  transition: color 0.7s;
 }
 .address-list-link:active,
 .address-list-link:hover,
 .address-list-link:focus {
-  color: #404bbf;
+  color: var(--hover-link-color);
 }
-/* .address-item {
-}
-.address-item:hover,
-.address-item:focus {
-} */
-
 /* HEADER */
 
 /* SERVICE */
@@ -124,6 +140,11 @@ a {
   padding-top: 188px;
   padding-bottom: 188px;
   background-color: rgba(46, 47, 66, 1);
+  background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+    url("../images/people-office.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   letter-spacing: 1.12px;
   text-align: center;
 }
@@ -149,6 +170,7 @@ a {
   font-weight: 500;
   letter-spacing: 0.64px;
   cursor: pointer;
+  transition: background-color 0.7s;
 }
 .service-button:hover,
 .service-button:focus {
